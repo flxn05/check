@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="thumbnail.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="script" href="service-worker.js">
+
+  <title>Checklist</title>
+  <style>
+    body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: white;
+    background-color: #1C1C1E;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 16vw;
+    gap: 10vh;
+    padding-top: 8vh;
+    -webkit-tap-highlight-color: transparent;
+    overflow-y: scroll;
+}
+main input {
+  accent-color: red;
+}
+label {
+  font-size: 1.75rem;
+}
+button {
+  padding-inline: 2rem;
+  padding-block: .5rem;
+  font-size: 2rem;
+  border: solid 1px grey;
+  border-radius: 1.25rem;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+button:focus {
+  background-color: #FF9500;
+}
+h2 {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 1rem;
+  padding-top: 3rem;
+  background-color: #1C1C1E;
+  font-size: 2rem;
+  transition: font-size .3s cubic-bezier(.47,.17,.55,1.11);
+}
+.shrink {
+  font-size: 1rem;
+}
+input[type="checkbox"] {
+  transform: scale(2);
+  margin-right: 2rem;
+}
+  </style>
+</head>
+<body>
+  <h2 id="h2">Medium Set</h3>
+<main>
+<input type="checkbox" id="c1">
+<label for="c1">Main Cam</label>
+<br><br>
+<input type="checkbox" id="c2">
+<label for="c2">Smartphone (Coordination)</label>
+<br><br>
+<input type="checkbox" id="c3">
+<label for="c3">Main Cam</label>
+<br><br>
+<input type="checkbox" id="c4">
+<label for="c4">Main Cam</label>
+<br><br>
+<input type="checkbox" id="c5">
+<label for="c5">Main Cam</label>
+<br><br>
+<input type="checkbox" id="c6">
+<label for="c6">Main Cam</label>
+<br><br>
+<input type="checkbox" id="c7">
+<label for="c7">Main Cam</label>
+<br><br>
+<input type="checkbox" id="c1">
+<label for="c1">Main Cam</label>
+
+</main>
+  <script>//navigator to service-worker.js</script>
+
+
+  <script>
+    window.addEventListener('scroll', function() {
+    const header = document.getElementById('h2');
+    if (window.scrollY > 44) {
+        header.classList.add('shrink');
+    } else {
+        header.classList.remove('shrink');
+    }
+});
+  </script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+</body>
+</html>
