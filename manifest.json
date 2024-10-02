@@ -1,7 +1,7 @@
 {
   "name": "Checklist",
   "short_name": "Checklist",
-  "start_url": "index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#1c1c1e",
   "theme_color": "#c70000",
@@ -9,7 +9,7 @@
   "icons": [
       {
           "src": "thumbnail.png",
-          "sizes": "196x196",
+          "sizes": "320x320",
           "type": "image/png"
       }
   ]
